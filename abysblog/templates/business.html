@@ -3,7 +3,10 @@
  {% block content%}
     <h1> Business News</h1>
 
-    <section class="roww">
+    <main class="container" >
+      <div class= "row">
+
+    <section class="roww col-9">
  {% for fruit in full_post %}
  
  <main  class="colu" style="border:1px solid #000; margin-bottom: 20px; padding:10px ">
@@ -14,11 +17,12 @@
     {% if fruit.image %}
     <img src="{{ fruit.image.url }}" style="width: 100%; height: 350px; object-fit: cover;">
     {% endif  %}
-    <h2>{{fruit.title}} </h2>
-    <h6>By{{fruit.author}} on {{abc.created_on}}</h6>
-    <p>{{fruit.body}}</p>
-    <a href= "#">Read More</a>
+    <h4><a href= "{% url 'post_detail' slug=fruit.slug %}">{{fruit.title|truncatechars:60}} </a></h4>
     <hr>
+    <h6>By{{fruit.author}} on {{fruit.created_on}}</h6>
+    <p>{{fruit.body|truncatechars:150}}</p>
+    <a href= "{% url 'post_detail' slug=fruit.slug %}">Read More</a>
+    
    
 
       
@@ -28,5 +32,12 @@
 
  {% endfor %}
 </section>
+
+<aside class="col-3">
+   <h1>Sire widget</h1>
+</aside>
+
+</div>
+</main>
 {% endblock%}
 

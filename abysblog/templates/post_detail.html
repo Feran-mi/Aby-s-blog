@@ -14,9 +14,30 @@
  <p>{{f_post.body }}</p>
 
 
-<a href="% url 'index' %}"></a>
+<hr>
+<h4>Comments</h4>
 
- 
+{% for comment in comments %}
+   <p><strong>{{ comment.author }} </strong> on {{ comment.created_on }} </p>
+   <p> {{ comment.body }} </p>
 
+{% empty %}
+<p>No comments yet. </p>
+
+{% endfor %}
+{% if user.is_authenticated %}
+
+<h3>Leave a comment.</h3>
+<form method="post">
+{% csrf_token %}
+
+{{ form.as_p}}
+<button type='submit' class= "btn btn-primary mt-2">Submit</button>
+
+</form>
+
+{% else %}
+<p>You must <a href="{% url 'login' %}? next={{ request.path }}" target="_blank" rel="noopener noreferrer">log in </a> to comment.</p>
+{% endif %}
 {% endblock%}
 

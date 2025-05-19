@@ -21,10 +21,12 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('abysblog.urls') ),
-    path('news/', include('abysblog.urls') ),
-    path('business/', include('abysblog.urls') ),
-    path('politics/', include('abysblog.urls') ),
-    path('sports/', include('abysblog.urls') ),
-    path('others/', include('abysblog.urls') ),
+    path('account/', include('django.contrib.auth.urls')),
+    # path('news/', include('abysblog.urls') ),
+    # path('business/', include('abysblog.urls') ),
+    # path('politics/', include('abysblog.urls') ),
+    # path('sports/', include('abysblog.urls') ),
+    # path('others/', include('abysblog.urls') ),
+   
 
 ]
